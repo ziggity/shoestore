@@ -40,6 +40,11 @@
 
         return $stores;
       }
+      function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->id};");
+            $GLOBALS['DB']->exec("DELETE FROM brands_stores WHERE store_id = {$this->id};");
+        }
       static function deleteAll()
       {
          $GLOBALS['DB']->exec("DELETE FROM stores;");
@@ -65,6 +70,10 @@
     function addBrand($brand)
       {
         $GLOBALS['DB']->exec("INSERT INTO brands_stores (brand_id, store_id) VALUES ({$brand->getId()}, {$this->id});");
+      }
+    function deleteBrand($brand)
+      {
+          $GLOBALS['DB']->exec("DELETE FROM brands_stores WHERE brand_id = {$brand->getId()} AND store_id = {$this->id};");
       }
       static function findById($search_id)
         {
