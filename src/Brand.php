@@ -52,6 +52,28 @@
         {
             $GLOBALS['DB']->exec("UPDATE brands SET name = '{$this->name}' WHERE id = {$this->id};");
         }
+        function getStoreList()
+        {
+            $returned_store_ids = $GLOBALS['DB']->query("SELECT brands_stores.store_id FROM brands
+                JOIN brands_stores on (brands.id = brands_stores.brand_id)
+                WHERE brands.id = {$this->id};");
+            $stores = array();
+            foreach($returned_store_ids as $id) {
+                $search_id = $id['store_id'];
+                array_push($stores, Store::findById($search_id));
+            }
+            return $stores;
+        }
+        static function findById($search_id)
+        {
+          $returned_brands = $GLOBALS['DB']->query("SELECT * FROM brands WHERE id = {$search_id};");
+          foreach($returned_brands as $brand) {
+              $id = $brand['id'];
+              $name = $brand['name'];
+              return new Brand($name, $id);
+          }
+        }
+
 }
 
 

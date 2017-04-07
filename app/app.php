@@ -17,14 +17,15 @@
     return $app['twig']->render('index.html.twig');
   });
 
-  $app->get("/stores", function() use ($app) {
-    return $app['twig']->render('stores.html.twig', array("stores" => Store::getAll()));
+  $app->get('/stores', function() use ($app) {
+        return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll()));
+    });
+  $app->post('/stores', function() use ($app) {
+      $store_name = $_POST['store_name'];
+      $new_store = new Store($store_name);
+      $new_store->save();
+      return $app->redirect('/stores');
   });
-  $app->get("/brands", function() use ($app) {
-    return $app['twig']->render('brands.html.twig', array("brands" => Brand::getAll()));
-  });
-  $app->get("/addstore", function() use ($app) {
-        return $app['twig']->render('addstore.html.twig', array("stores" => Brand::getAll()));
-  });
+  
   return $app;
  ?>
