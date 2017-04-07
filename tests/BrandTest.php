@@ -34,24 +34,37 @@ class BrandTest extends PHPUnit_Framework_TestCase
     }
     function test_getAll()
     {
-    $newBrand = new Brand ('tar');
-    $newBrand2 = new Brand ('jax');
-    $newBrand->save();
-    $newBrand2->save();
-    $result = Brand::getAll();
-    $this->assertEquals($result, [$newBrand, $newBrand2] );
+      $newBrand = new Brand ('tar');
+      $newBrand2 = new Brand ('jax');
+      $newBrand->save();
+      $newBrand2->save();
+      $result = Brand::getAll();
+      $this->assertEquals($result, [$newBrand, $newBrand2] );
     }
     function test_update()
     {
-    $brand_name = "Best shoes ever!";
-    $test_Brand = new Brand($brand_name);
-    $test_Brand->save();
-    $new_name = "too fast too furious";
-    $test_Brand->setName($new_name);
-    $test_Brand->update();
-    $result = Brand::getAll();
-    $this->assertEquals([$test_Brand], $result);
+      $brand_name = "Best shoes ever!";
+      $test_Brand = new Brand($brand_name);
+      $test_Brand->save();
+      $new_name = "too fast too furious";
+      $test_Brand->setName($new_name);
+      $test_Brand->update();
+      $result = Brand::getAll();
+      $this->assertEquals([$test_Brand], $result);
     }
+    function test_delete()
+    {
+      $brand_name = "Koss";
+      $test_Brand = new Brand($brand_name);
+      $test_Brand->save();
+      $brand_name2 = "Apples";
+      $test_Brand2 = new Brand($brand_name2);
+      $test_Brand2->save();
+      $test_Brand->delete();
+      $result = Brand::getAll();
+      $this->assertEquals([$test_Brand2], $result);
+    }
+
   }
 
 
