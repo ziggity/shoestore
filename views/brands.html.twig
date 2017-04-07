@@ -1,12 +1,30 @@
 {% include 'top.html.twig' %}
-  {% if brands is not empty%}
+
   <h1> Our Glorious Brands! </h1>
-    {% for brand in brands %}
-    <ol>
-      <li><a href="/brand{{ brand.getId }}">{{ brand.getName}}</a> {{ brand.getCity }}</li>
-    </ol>
-    {% endfor %}
-  {% else %}
-    <h1> Whoopsy daisy, it appears there are no brands yet, add some and try again!</h1>
-  {% endif %}
+  <div class='container'>
+    <div class='row'>
+      <div class='col col-sm-6'>
+        <h2>All Brands:</h2>
+        {% if brands is not empty %}
+          <ul>
+            {% for brand in brands %}
+                <li><a href='/brand/{{ brand.getId }}'>{{ brand.getName }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      <div class='col col-sm-6'>
+        <h2>Please add a new brand here:</h2>
+        <form action='/brands' method='post' class='form well'>
+          <div class='form-group'>
+            <label for='brand_name'>Please enter the new brand's name:</label>
+            <input type='text' class='form-control' name='brand_name' id='brand_name' placeholder='New brand goes here'>
+            <br>
+            <button type='submit' class='btn btn-primary'>Click to add brand</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
 {% include 'bottom.html.twig' %}

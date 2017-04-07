@@ -38,8 +38,8 @@
           }
           return $brand;
         }
-      static function deleteAll()
-      {
+        static function deleteAll()
+        {
         $deleteAll = $GLOBALS['DB']->exec("DELETE FROM brands;");
         if ($deleteAll)
         {
@@ -47,7 +47,11 @@
         }else {
           return false;
         }
-      }
+        }
+        function update()
+        {
+            $GLOBALS['DB']->exec("UPDATE brands SET name = '{$this->name}' WHERE id = {$this->id};");
+        }
 }
 
 

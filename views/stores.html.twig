@@ -1,12 +1,30 @@
 {% include 'top.html.twig' %}
-  {% if stores is not empty%}
-  <h1> Here's all our stores! </h1>
-    {% for store in stores %}
-    <ol>
-      <li><a href="/store{{ store.getId }}">{{ store.getName}}</a></li>
-    </ol>
-    {% endfor %}
-  {% else %}
-    <h1> Whoopsy daisy, it appears there are no stores yet, add some and try again! </h1>
-  {% endif %}
-{% include 'bottom.html.twig' %}
+<div class='container'>
+  <div class='row'>
+    <div class='col col-sm-6'>
+      <h2>All Stores:</h2>
+      {% if stores is not empty %}
+          <ul>
+              {% for store in stores %}
+                  <li><a href='/store/{{ store.getId }}'>{{ store.getName }}</a></li>
+              {% endfor %}
+          </ul>
+      {% endif %}
+    </div>
+    <div class='col col-sm-6'>
+      <h2>Add a new store:</h2>
+      <form action='/stores' method='post' class='form well'>
+          <div class='form-group'>
+              <label for='store_name'>Please enter the new store's name here:</label>
+              <input type='text' class='form-control' name='store_name' id='store_name' placeholder='store name goes here'>
+              <br>
+              <button type='submit' class='btn btn-primary'>Add store</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+{% include 'bottom.html.twig'%}
