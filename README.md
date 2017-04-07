@@ -22,6 +22,7 @@ _A web app to collect info on shoe brands, shoe stores, and tell users which sto
 * _USE shoes;_
 * _CREATE TABLE brands(name VARCHAR(255), id serial PRIMARY KEY);_
 * _CREATE TABLE stores(name VARCHAR(255), id serial PRIMARY KEY);_
+* _CREATE TABLE brands_stores (id serial PRIMARY KEY, store_id INT, brand_id INT);_
 
 
 ## Specs (include project specs below)

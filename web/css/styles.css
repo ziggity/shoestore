@@ -1,0 +1,19 @@
+h1,h2,h3{
+  color:#9b8911
+}
+
+body {
+  /* Base64 encoded transparent gif */
+  background: url('http://www.supertramping.com/gallery/var/albums/Extended_Travels/201007_Germany_-_Switzerland/Germany/Berlin/Pile%20of%20Shoes%20-%20Sebrinica%20Memorial%20Concept.JPG?m=1300712964');
+  
+}
+
+.jumbotron {
+    position: relative;
+    background:  url("https://playingforkeepsblog.files.wordpress.com/2014/04/img_0538.jpg") center center;
+    width: 75%;
+    height: 75%;
+    background-size: cover;
+    overflow: hidden;
+    width: 100%;
+}

@@ -1,0 +1,12 @@
+{% include 'top.html.twig' %}
+  {% if stores is not empty%}
+  <h1> Here's all our stores! </h1>
+    {% for store in stores %}
+    <ol>
+      <li><a href="/store{{ store.getId }}">{{ store.getName}}</a></li>
+    </ol>
+    {% endfor %}
+  {% else %}
+    <h1> Whoopsy daisy, it appears there are no stores yet, add some and try again! </h1>
+  {% endif %}
+{% include 'bottom.html.twig' %}

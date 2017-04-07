@@ -1,0 +1,12 @@
+{% include 'top.html.twig' %}
+  {% if brands is not empty%}
+  <h1> Our Glorious Brands! </h1>
+    {% for brand in brands %}
+    <ol>
+      <li><a href="/brand{{ brand.getId }}">{{ brand.getName}}</a> {{ brand.getCity }}</li>
+    </ol>
+    {% endfor %}
+  {% else %}
+    <h1> Whoopsy daisy, it appears there are no brands yet, add some and try again!</h1>
+  {% endif %}
+{% include 'bottom.html.twig' %}
