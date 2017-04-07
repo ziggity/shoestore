@@ -1,3 +1,57 @@
 {% include 'top.html.twig'%}
-
+<div class='container'>
+    <div class='well'>
+        <h1>{{ brand.getName }} shoes sold here:</h1>
+        {% if brand_stores is not empty %}
+          <ol>
+            {% for store in brand_stores %}
+              <li><a href='/store/{{ store.getId }}'>{{ store.getName }}</a></li>
+            {% endfor %}
+          </ol>
+        {% endif %}
+    </div>
+    <div class='well'>
+      <h1>Here you can add this brand:{{ brand.getName }} to another store:</h1>
+      <form action='/brand/{{ brand.getId }}/addBrandStore' method='post' class='form well'>
+        <div class='form-group'>
+            <label>Please select a store:</label>
+            <select name='store_id' class='form-control'>
+                {% for store in all_stores %}
+                    <option value={{ store.getId }}>{{ store.getName }}</option>
+                {% endfor %}
+            </select>
+            <button type='submit' class='btn btn-primary'>Click to add to the brand: {{ brand.getName }}</button>
+          </div>
+        </form>
+        <h1>If you want, you can remove this brand: {{ brand.getName }} from a store:</h1>
+        <form action='/brand/{{ brand.getId }}/remove_brand' method='post' class='form well'>
+            <input type='hidden' name='_method' value='delete'>
+            <div class='form-group'>
+                <label>Select a store:</label>
+                <select name='store_id' class='form-control'>
+                    {% for store in brand_stores %}
+                        <option value={{ store.getId }}>{{ store.getName }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <button type='submit' class='btn btn-primary'>Remove this brand: {{ brand.getName }}</button>
+            </div>
+        </form>
+        <h1>Feel free to update this brand: {{ brand.getName }} here:</h1>
+        <div class='well'>
+          <form action='/brand/{{ brand.getId }}' method='post' class='form'>
+            <input type='hidden' name='_method' value='patch'>
+            <label>Please update this brand's name {{ brand.getName }} :</label>
+            <input type='text' name='brandName' placeholder='new brand name' class='form-control'>
+            <br>
+            <button type='submit' class='btn btn-primary'>You can update info here for: {{ brand.getName }}</button>
+          </form>
+          <br>
+          <form action='/brand/{{ brand.getId }}' method='post' class='form'>
+              <input type='hidden' value='delete' name='_method'>
+              <button type='submit' class='btn btn-danger'>You can delete this brand: {{ brand.getName }}</button>
+          </form>
+        </div>
+    </div>
+</div>
 {% include 'bottom.html.twig'%}

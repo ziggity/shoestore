@@ -1,26 +1,32 @@
 {% include 'top.html.twig' %}
 <div class='container'>
   <div class='row'>
-    <div class='col col-sm-6'>
-      <h2>All Stores:</h2>
+    <div class='jumbotron'>
+      <div class="well">
+       <h2>Here's all of our featured Stores, thanks to your crowdsourcing power!:</h2>
       {% if stores is not empty %}
-          <ul>
-              {% for store in stores %}
-                  <li><a href='/store/{{ store.getId }}'>{{ store.getName }}</a></li>
-              {% endfor %}
-          </ul>
+        <ul>
+          {% for store in stores %}
+          <li><a href='/store/{{ store.getId }}'>{{ store.getName }}</a></li>
+          {% endfor %}
+        </ul>
       {% endif %}
     </div>
-    <div class='col col-sm-6'>
+  </div>
+    <div class='jumbotron'>
+      <div class="well">
       <h2>Add a new store:</h2>
       <form action='/stores' method='post' class='form well'>
           <div class='form-group'>
-              <label for='store_name'>Please enter the new store's name here:</label>
-              <input type='text' class='form-control' name='store_name' id='store_name' placeholder='store name goes here'>
+              <label for='store_name'>Please enter the new store's name here with no weird punctuation like apostrophes (',):</label>
+              <input type='text' class='form-control' name='store_name' id='store_name' placeholder='Store name goes here'>
               <br>
               <button type='submit' class='btn btn-primary'>Add store</button>
           </div>
       </form>
+       <div class="well"><a href="./">Click here to go back Home</a>
+       </div>
+      </div>
     </div>
   </div>
 </div>

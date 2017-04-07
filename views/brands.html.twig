@@ -1,30 +1,29 @@
 {% include 'top.html.twig' %}
-
-  <h1> Our Glorious Brands! </h1>
   <div class='container'>
-    <div class='row'>
-      <div class='col col-sm-6'>
+    <h1> Our Glorious Brands! </h1>
+      <div class='well'>
         <h2>All Brands:</h2>
         {% if brands is not empty %}
-          <ul>
-            {% for brand in brands %}
-                <li><a href='/brand/{{ brand.getId }}'>{{ brand.getName }}</a></li>
-            {% endfor %}
-          </ul>
+        <ul>
+        {% for brand in brands %}
+         <li><a href='/brand/{{ brand.getId }}'>{{ brand.getName }}</a></li>
+        {% endfor %}
+        </ul>
         {% endif %}
       </div>
-      <div class='col col-sm-6'>
-        <h2>Please add a new brand here:</h2>
-        <form action='/brands' method='post' class='form well'>
-          <div class='form-group'>
-            <label for='brand_name'>Please enter the new brand's name:</label>
-            <input type='text' class='form-control' name='brand_name' id='brand_name' placeholder='New brand goes here'>
-            <br>
-            <button type='submit' class='btn btn-primary'>Click to add brand</button>
-          </div>
-        </form>
+      <div class='well'>
+       <h2>Please add a new brand here:</h2>
+      <form action='/brands' method='post' class='form well'>
+        <div class='form-group'>
+          <label for='brandName' class="well">Please enter the new brand's name (no apostrophes please):</label>
+          <input type='text' class='form-control' name='brandName' id='brandName' placeholder='New brand name goes here'>
+          <br>
+          <button type='submit' class='btn btn-primary'>Click to add brand</button>
+        </div>
+      </form>
+      </div>
+      <div class="well"><a href="./">Click here to go back Home</a>
       </div>
     </div>
   </div>
-
 {% include 'bottom.html.twig' %}
