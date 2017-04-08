@@ -42,7 +42,7 @@
           <form action='/brand/{{ brand.getId }}' method='post' class='form'>
             <input type='hidden' name='_method' value='patch'>
             <label>Please update this brand's name {{ brand.getName }} :</label>
-            <input type='text' name='brandName' placeholder='new brand name' class='form-control'>
+            <input type='text' name='brandName' placeholder='new brand name required' class='form-control'>
             <br>
             <button type='submit' class='btn btn-primary'>You can update info here for: {{ brand.getName }}</button>
           </form>
