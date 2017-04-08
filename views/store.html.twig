@@ -45,7 +45,7 @@
         <form action='/store/{{ store.getId }}' method='post' class='form'>
           <input type='hidden' value='patch' name='_method'>
           <label for='store_name'>Update this store's name:</label>
-          <input type='text' name='store_name' id='store_name' placeholder='new name' class='form-control'>
+          <input type='text' name='store_name' id='store_name' placeholder='new name' class='form-control' required>
           <button type='submit' class='btn btn-primary'>Update info</button>
         </form>
         <form action='/store/{{ store.getId }}' method='post' class='form'>
